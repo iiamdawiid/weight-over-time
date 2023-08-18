@@ -1,0 +1,47 @@
+import matplotlib.pyplot as plt
+
+# initialize empty lists for weight and time/date
+weights = []
+datelog = []
+
+# weight and time collection from user -- myself
+while True:
+
+    while True:
+        weight = input("Enter body weight (in lbs) or enter 'continue' to proceed: ")
+
+        try:
+            number = float(weight)
+            print(f"Valid Weight Input: {weight}")
+            break
+
+        except ValueError:
+            if weight == 'continue':
+                break
+            else:
+                print("INVALID INPUT. Please Enter a valid weight...")
+
+    if weight.lower() == "continue":
+        break
+    date = input("Enter date in format (MM-DD-YYYY) or enter 'done' to proceed: ")
+    if date.lower() == "done":
+        break
+    
+    # append weight and date to lists
+    weights.append(float(weight))
+    datelog.append(date)
+
+# plotting on graph
+plt.plot(datelog, weights)
+plt.xlabel("Date")
+plt.ylabel("Body Weight (lbs)")
+plt.title("Increase In Bodyweight Over Time: 2023 Bulk")
+plt.xticks(rotation = 45)
+plt.show()
+
+#open file to store date
+with open("weight_data.txt", "w") as file:
+    #write weight and date to file
+    file.write("2023 Bulk: Tracking Bodyweight Over Time...\n")
+    for weights, datelog in zip(weights, datelog):
+        file.write(f"({weights}lbs on {datelog}),")
