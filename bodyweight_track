@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 weights = []
 datelog = []
 
-# weight and time collection from user -- myself
+# weight and time collection from user 
 while True:
 
     while True:
@@ -36,7 +36,7 @@ plt.plot(datelog, weights)
 plt.xlabel("Date")
 plt.ylabel("Body Weight (lbs)")
 plt.title("Increase In Bodyweight Over Time: 2023 Bulk")
-plt.xticks(rotation = 45)
+plt.xticks(rotation = 90)
 plt.show()
 
 #open file to store date
